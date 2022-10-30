@@ -9,8 +9,7 @@ public class Main {
         Supplier<String> helloSupplier = LambdaUtil.helloSupplier();
         System.out.println(helloSupplier.get());//Hello
 
-        Predicate<String> isEmptyPredicate = LambdaUtil.isEmptyPredicate();
-
+/*        Predicate<String> isEmptyPredicate = LambdaUtil.isEmptyPredicate();
         System.out.println(isEmptyPredicate.test("java"));//false
         System.out.println(isEmptyPredicate.test(""));//true
 
@@ -73,7 +72,7 @@ public class Main {
         System.out.println(incrementFunction.applyAsInt(4));//5
         System.out.println(squareFunction.applyAsInt(3));//9
         System.out.println(identityFunction.applyAsInt(10));//10
-    }
+  */  }
 
 }
 
