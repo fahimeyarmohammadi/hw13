@@ -9,11 +9,11 @@ public class Main {
         Supplier<String> helloSupplier = LambdaUtil.helloSupplier();
         System.out.println(helloSupplier.get());//Hello
 
-/*        Predicate<String> isEmptyPredicate = LambdaUtil.isEmptyPredicate();
+        Predicate<String> isEmptyPredicate = LambdaUtil.isEmptyPredicate();
         System.out.println(isEmptyPredicate.test("java"));//false
         System.out.println(isEmptyPredicate.test(""));//true
 
-        BiFunction<String, Integer, String> stringMultiplier = LambdaUtil.stringMultiplier();
+/*        BiFunction<String, Integer, String> stringMultiplier = LambdaUtil.stringMultiplier();
         System.out.println(stringMultiplier.apply("Hi", 3));//HiHiHi
 
         Function<BigDecimal, String> toDollarStringFunction = LambdaUtil.toDollarStringFunction();
@@ -72,7 +72,8 @@ public class Main {
         System.out.println(incrementFunction.applyAsInt(4));//5
         System.out.println(squareFunction.applyAsInt(3));//9
         System.out.println(identityFunction.applyAsInt(10));//10
-  */  }
+  */
+    }
 
 }
 
