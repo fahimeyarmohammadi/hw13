@@ -13,7 +13,7 @@ public class Main {
         System.out.println(isEmptyPredicate.test("java"));//false
         System.out.println(isEmptyPredicate.test(""));//true
 
-/*        BiFunction<String, Integer, String> stringMultiplier = LambdaUtil.stringMultiplier();
+        BiFunction<String, Integer, String> stringMultiplier = LambdaUtil.stringMultiplier();
         System.out.println(stringMultiplier.apply("Hi", 3));//HiHiHi
 
         Function<BigDecimal, String> toDollarStringFunction = LambdaUtil.toDollarStringFunction();
@@ -55,7 +55,7 @@ public class Main {
         System.out.println(toLowerWithTrim.apply("  Hey "));//hey
 
         //extra points
-        BiFunction<IntUnaryOperator, IntPredicate, IntUnaryOperator> intFunctionToConditionalIntFunction
+/*        BiFunction<IntUnaryOperator, IntPredicate, IntUnaryOperator> intFunctionToConditionalIntFunction
                 = LambdaUtil.functionToConditionalFunction();
         IntUnaryOperator abs = intFunctionToConditionalIntFunction.apply(a -> -a, a -> a < 0);
         System.out.println(abs.applyAsInt(-5));//5

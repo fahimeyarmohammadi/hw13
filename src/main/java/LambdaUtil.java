@@ -1,5 +1,6 @@
 import java.math.BigDecimal;
 import java.util.Map;
+import java.util.Random;
 import java.util.function.*;
 
 public class LambdaUtil {
@@ -10,8 +11,8 @@ public class LambdaUtil {
      * @return a string supplier
      */
     public static Supplier<String> helloSupplier() {
-        Supplier<String>hello=()->"Hello";
-        return hello;
+        Supplier<String>sayHelloSupplier=()->"Hello";
+        return sayHelloSupplier;
     }
 
     /**
@@ -31,8 +32,13 @@ public class LambdaUtil {
      * @return function that repeats Strings
      */
     public static BiFunction<String, Integer, String> stringMultiplier() {
-        //todo
-        return null;
+        BiFunction<String, Integer,String>stringRepeatBiFunction=(s,i)->{
+            String result=s;
+            for (int j = 0; j < i-1; j++) {
+                result=result+s;
+            }return result;
+        };
+        return stringRepeatBiFunction;
     }
 
     /**
@@ -42,8 +48,8 @@ public class LambdaUtil {
      * @return function that converts adds dollar sign
      */
     public static Function<BigDecimal, String> toDollarStringFunction() {
-        //todo
-        return null;
+        Function<BigDecimal,String>bigDecimalToStringFunction=(bigDecimal)->"$"+bigDecimal.toString();
+        return bigDecimalToStringFunction;
     }
 
     /**
@@ -55,8 +61,8 @@ public class LambdaUtil {
      * @return a string predicate
      */
     public static Predicate<String> lengthInRangePredicate(int min, int max) {
-        //todo
-        return null;
+        Predicate<String>lengthPredicate=s-> (min <= s.length()) & (s.length()< max);
+        return lengthPredicate;
     }
 
     /**
@@ -65,8 +71,11 @@ public class LambdaUtil {
      * @return int supplier
      */
     public static IntSupplier randomIntSupplier() {
-        //todo
-        return null;
+        return ()->{
+            Random random=new Random();
+            int r=random.nextInt();
+            return r;
+        };
     }
 
 
@@ -76,8 +85,12 @@ public class LambdaUtil {
      * @return int operation
      */
     public static IntUnaryOperator boundedRandomIntSupplier() {
-        //todo
-        return null;
+        IntUnaryOperator boundedRandom=(n)->{
+            Random random=new Random();
+            int r=random.nextInt(n);
+            return r;
+        };
+        return boundedRandom;
     }
 
     /**
@@ -86,8 +99,7 @@ public class LambdaUtil {
      * @return square operation
      */
     public static IntUnaryOperator intSquareOperation() {
-        //todo
-        return null;
+        return (n)->n*n;
     }
 
     /**
@@ -96,8 +108,8 @@ public class LambdaUtil {
      * @return binary sum operation
      */
     public static LongBinaryOperator longSumOperation() {
-        //todo
-        return null;
+        LongBinaryOperator longBinaryOperator=(a,b)->a+b;
+        return longBinaryOperator;
     }
 
     /**
@@ -106,8 +118,8 @@ public class LambdaUtil {
      * @return string to int converter
      */
     public static ToIntFunction<String> stringToIntConverter() {
-        //todo
-        return null;
+        ToIntFunction<String>stringToIntFunc=s->Integer.parseInt(s);
+        return stringToIntFunc;
     }
 
     /**
@@ -118,8 +130,8 @@ public class LambdaUtil {
      * @return a function supplier
      */
     public static Supplier<IntUnaryOperator> nMultiplyFunctionSupplier(int n) {
-        //todo
-        return null;
+        Supplier<IntUnaryOperator>nMultiplyFuncSupplier=()-> (a)->a*n;
+        return nMultiplyFuncSupplier;
     }
 
     /**
@@ -128,8 +140,8 @@ public class LambdaUtil {
      * @return a supplier instance
      */
     public static Supplier<Supplier<Supplier<String>>> trickyWellDoneSupplier() {
-        //todo
-        return null;
+        Supplier<Supplier<Supplier<String>>> wellDownSupplier=()->()->()->"Well Down";
+        return wellDownSupplier;
     }
 
     /**
@@ -138,8 +150,8 @@ public class LambdaUtil {
      * @return function that composes functions with trim() function
      */
     public static UnaryOperator<Function<String, String>> composeWithTrimFunction() {
-        //todo
-        return null;
+        UnaryOperator<Function<String, String>> composeTrimFunction=(s)-> String::trim;
+        return composeTrimFunction ;
     }
 
     /**
@@ -152,7 +164,7 @@ public class LambdaUtil {
      * @return a binary function that receiver predicate and function and compose them to create a new function
      */
     public static BiFunction<IntUnaryOperator, IntPredicate, IntUnaryOperator> functionToConditionalFunction() {
-        //todo :: extra points
+      //  BiFunction<IntUnaryOperator, IntPredicate, IntUnaryOperator> biFunction=()->;
         return null;
     }
 
