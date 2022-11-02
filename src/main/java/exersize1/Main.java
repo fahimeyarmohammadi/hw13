@@ -56,7 +56,7 @@ public class Main {
         System.out.println(toLowerWithTrim.apply("  Hey "));//hey
 
         //extra points
-/*        BiFunction<IntUnaryOperator, IntPredicate, IntUnaryOperator> intFunctionToConditionalIntFunction
+        BiFunction<IntUnaryOperator, IntPredicate, IntUnaryOperator> intFunctionToConditionalIntFunction
                 = exersize1.LambdaUtil.functionToConditionalFunction();
         IntUnaryOperator abs = intFunctionToConditionalIntFunction.apply(a -> -a, a -> a < 0);
         System.out.println(abs.applyAsInt(-5));//5
@@ -73,7 +73,6 @@ public class Main {
         System.out.println(incrementFunction.applyAsInt(4));//5
         System.out.println(squareFunction.applyAsInt(3));//9
         System.out.println(identityFunction.applyAsInt(10));//10
-  */
     }
 
 }

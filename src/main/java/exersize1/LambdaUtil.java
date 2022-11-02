@@ -13,7 +13,7 @@ public class LambdaUtil {
      * @return a string supplier
      */
     public static Supplier<String> helloSupplier() {
-        Supplier<String>sayHelloSupplier=()->"Hello";
+        Supplier<String> sayHelloSupplier = () -> "Hello";
         return sayHelloSupplier;
     }
 
@@ -23,7 +23,7 @@ public class LambdaUtil {
      * @return a string predicate
      */
     public static Predicate<String> isEmptyPredicate() {
-        Predicate<String>isEmpPredicate=s->s.isEmpty();
+        Predicate<String> isEmpPredicate = s -> s.isEmpty();
         return isEmpPredicate;
     }
 
@@ -34,11 +34,12 @@ public class LambdaUtil {
      * @return function that repeats Strings
      */
     public static BiFunction<String, Integer, String> stringMultiplier() {
-        BiFunction<String, Integer,String>stringRepeatBiFunction=(s,i)->{
-            String result=s;
-            for (int j = 0; j < i-1; j++) {
-                result=result+s;
-            }return result;
+        BiFunction<String, Integer, String> stringRepeatBiFunction = (s, i) -> {
+            String result = s;
+            for (int j = 0; j < i - 1; j++) {
+                result = result + s;
+            }
+            return result;
         };
         return stringRepeatBiFunction;
     }
@@ -50,7 +51,7 @@ public class LambdaUtil {
      * @return function that converts adds dollar sign
      */
     public static Function<BigDecimal, String> toDollarStringFunction() {
-        Function<BigDecimal,String>bigDecimalToStringFunction=(bigDecimal)->"$"+bigDecimal.toString();
+        Function<BigDecimal, String> bigDecimalToStringFunction = (bigDecimal) -> "$" + bigDecimal.toString();
         return bigDecimalToStringFunction;
     }
 
@@ -63,7 +64,7 @@ public class LambdaUtil {
      * @return a string predicate
      */
     public static Predicate<String> lengthInRangePredicate(int min, int max) {
-        Predicate<String>lengthPredicate=s-> (min <= s.length()) & (s.length()< max);
+        Predicate<String> lengthPredicate = s -> (min <= s.length()) & (s.length() < max);
         return lengthPredicate;
     }
 
@@ -73,9 +74,9 @@ public class LambdaUtil {
      * @return int supplier
      */
     public static IntSupplier randomIntSupplier() {
-        return ()->{
-            Random random=new Random();
-            int r=random.nextInt();
+        return () -> {
+            Random random = new Random();
+            int r = random.nextInt();
             return r;
         };
     }
@@ -87,9 +88,9 @@ public class LambdaUtil {
      * @return int operation
      */
     public static IntUnaryOperator boundedRandomIntSupplier() {
-        IntUnaryOperator boundedRandom=(n)->{
-            Random random=new Random();
-            int r=random.nextInt(n);
+        IntUnaryOperator boundedRandom = (n) -> {
+            Random random = new Random();
+            int r = random.nextInt(n);
             return r;
         };
         return boundedRandom;
@@ -101,7 +102,7 @@ public class LambdaUtil {
      * @return square operation
      */
     public static IntUnaryOperator intSquareOperation() {
-        return (n)->n*n;
+        return (n) -> n * n;
     }
 
     /**
@@ -110,7 +111,7 @@ public class LambdaUtil {
      * @return binary sum operation
      */
     public static LongBinaryOperator longSumOperation() {
-        LongBinaryOperator longBinaryOperator=(a,b)->a+b;
+        LongBinaryOperator longBinaryOperator = (a, b) -> a + b;
         return longBinaryOperator;
     }
 
@@ -120,7 +121,7 @@ public class LambdaUtil {
      * @return string to int converter
      */
     public static ToIntFunction<String> stringToIntConverter() {
-        ToIntFunction<String>stringToIntFunc=s->Integer.parseInt(s);
+        ToIntFunction<String> stringToIntFunc = s -> Integer.parseInt(s);
         return stringToIntFunc;
     }
 
@@ -132,7 +133,7 @@ public class LambdaUtil {
      * @return a function supplier
      */
     public static Supplier<IntUnaryOperator> nMultiplyFunctionSupplier(int n) {
-        Supplier<IntUnaryOperator>nMultiplyFuncSupplier=()-> (a)->a*n;
+        Supplier<IntUnaryOperator> nMultiplyFuncSupplier = () -> (a) -> a * n;
         return nMultiplyFuncSupplier;
     }
 
@@ -142,7 +143,7 @@ public class LambdaUtil {
      * @return a supplier instance
      */
     public static Supplier<Supplier<Supplier<String>>> trickyWellDoneSupplier() {
-        Supplier<Supplier<Supplier<String>>> wellDownSupplier=()->()->()->"Well Down";
+        Supplier<Supplier<Supplier<String>>> wellDownSupplier = () -> () -> () -> "Well Down";
         return wellDownSupplier;
     }
 
@@ -152,8 +153,8 @@ public class LambdaUtil {
      * @return function that composes functions with trim() function
      */
     public static UnaryOperator<Function<String, String>> composeWithTrimFunction() {
-        UnaryOperator<Function<String, String>> composeTrimFunction=(s)-> String::trim;
-        return composeTrimFunction ;
+        UnaryOperator<Function<String, String>> composeTrimFunction = (s) -> String::trim;
+        return composeTrimFunction;
     }
 
     /**
@@ -166,8 +167,12 @@ public class LambdaUtil {
      * @return a binary function that receiver predicate and function and compose them to create a new function
      */
     public static BiFunction<IntUnaryOperator, IntPredicate, IntUnaryOperator> functionToConditionalFunction() {
-      //  BiFunction<IntUnaryOperator, IntPredicate, IntUnaryOperator> biFunction=()->;
-        return null;
+        return (a, b) -> t -> {
+            if (b.test(t)) {
+                return -t;
+            } else
+                return t;
+        };
     }
 
     /**
@@ -178,8 +183,13 @@ public class LambdaUtil {
      * @return a high-order function that fetches a function from a function map by a given name or returns identity()
      */
     public static BiFunction<Map<String, IntUnaryOperator>, String, IntUnaryOperator> functionLoader() {
-        //todo :: extra points
-        return null;
+        return (m, s) -> a -> {
+            if (m.containsKey(s)) {
+                IntUnaryOperator intUnaryOperator = m.get(s);
+                return intUnaryOperator.applyAsInt(a);
+            } else
+                return a;
+        };
     }
 }
 
