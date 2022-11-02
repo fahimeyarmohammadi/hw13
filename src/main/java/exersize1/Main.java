@@ -1,3 +1,4 @@
+package exersize1;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
@@ -56,11 +57,11 @@ public class Main {
 
         //extra points
 /*        BiFunction<IntUnaryOperator, IntPredicate, IntUnaryOperator> intFunctionToConditionalIntFunction
-                = LambdaUtil.functionToConditionalFunction();
+                = exersize1.LambdaUtil.functionToConditionalFunction();
         IntUnaryOperator abs = intFunctionToConditionalIntFunction.apply(a -> -a, a -> a < 0);
         System.out.println(abs.applyAsInt(-5));//5
 
-        BiFunction<Map<String, IntUnaryOperator>, String, IntUnaryOperator> functionLoader = LambdaUtil.functionLoader();
+        BiFunction<Map<String, IntUnaryOperator>, String, IntUnaryOperator> functionLoader = exersize1.LambdaUtil.functionLoader();
         Map<String, IntUnaryOperator> functionMap = new HashMap<>();
         functionMap.put("increment", x -> x + 1);
         functionMap.put("square", x -> x * x);
